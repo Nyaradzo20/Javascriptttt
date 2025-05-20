@@ -52,10 +52,10 @@ console.log('------------------');
  console.log('Pyramid');
 console.log('------------------');
 
-for(let row = 0; row <=5; row++){
+for(let row = 0; row <=7; row++){
     let star = "";
     //this loop is for column
-    for(let space = 1; space <= 5 - row; space++){
+    for(let space = 1; space <= 7 - row; space++){
         //what we want to print
         star += " ";
     }
