@@ -46,5 +46,7 @@ console.log(maxOfTwo(c,d));
 //Write a function reverseString(str) that returns the string reversed.
 
 function reverseString(strin){
-    
+    return strin.split("").reverse().join("");
 }
+ let strin = "GREAT DAY";
+ console.log(reverseString(strin));
