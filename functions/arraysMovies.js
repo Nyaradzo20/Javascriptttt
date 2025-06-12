@@ -33,10 +33,17 @@ for(const filteredMovies of movies){
         console.log("oops nothing to see here")
     }
 }
-
+console.log()
 let movieCollection = [
   { title: "Inception", director: "Christopher Nolan", year: 2010 },
   { title: "Get Out", director: "Jordan Peele", year: 2017 },
   { title: "The Matrix", director: "Wachowskis", year: 1999 },
   { title: "Black Panther", director: "Ryan Coogler", year: 2018 }
 ];
+
+//.map()Transforms each item & returns a new array
+let titles = movieCollection.map(movie => movie.title)
+console.log(titles);
+
+let fave = movieCollection.find(movie => movie.title === "Black Panther");
+console.log(fave.title)
