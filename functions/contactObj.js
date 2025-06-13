@@ -1,21 +1,23 @@
-
 //creating nested objects
 let contact = {
-    "ojo":{
-    name :"joel",
-    phone:2230000,
-    email:"joel@gmail.com",
-},
-"nyarie": {
-    name: "Nyarie",
-    phone: "555-1234",
-    email: "nyarie@gmail.com",
-},
-"Bree":{
-    name:"Brianna",
-    phone:93450-99,
-    email:"bree@gmail.com",
-}
+    // Contact for 'ojo'
+    "ojo": {
+        name: "joel",           // Name of the contact
+        phone: 2230000,         // Phone number for 'ojo'
+        email: "joel@gmail.com" // Email address for 'ojo'
+    },
+    // Contact for 'nyarie'
+    "nyarie": {
+        name: "Nyarie",             // Name of the contact
+        phone: "555-1234",          // Phone number for 'nyarie'
+        email: "nyarie@gmail.com"   // Email address for 'nyarie'
+    },
+    // Contact for 'Bree'
+    "Bree": {
+        name: "Brianna",            // Name of the contact
+        phone: 93450-99,            // Phone number for 'Bree'
+        email: "bree@gmail.com"     // Email address for 'Bree'
+    }
 };
 
 //show object
