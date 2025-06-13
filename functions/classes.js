@@ -50,12 +50,29 @@ lily.intro()
 lily.isAdult()
 
 let people =[lily,nyarie,joel,lara,loreen,ella,minnie,tim];
-for(let person of people){
+/*for(let person of people){
     person.introduce();
 }
-
+*/
 function addPerson(name,age){
       const newPerson = new Person(name, age);
       people.push(newPerson);
       }
 
+   /* addPerson("Luke", 23);
+   for(let person of people){
+    person.introduce();
+} */
+ 
+function listAdults(people){
+    for(let person of people){
+    if(person.age >=18){
+        console.log(`${person.name} is an adult, she is ${person.age} years old`);
+    }
+    else{
+        continue;
+       }
+    }
+}
+
+listAdults(people);
