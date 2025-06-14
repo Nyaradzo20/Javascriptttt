@@ -1,13 +1,14 @@
-class Village{
-    constructor(name, x,y){
+class City{
+    constructor(name, x,y, villages =[]){
         this.name =name;
         this.x = x;
         this.y = y;
+        this.villages = villages;
     }
 }
 
 
-class City extends Village{
+class Village extends City{
     constructor(name,x,y) {
         super(name, x,y);
 
@@ -26,5 +27,6 @@ class Drone{
     constructor(name, speed, x, y,batteryLife){
         this.name = name;
         this.speed = speed;
+        this.batteryLife = batteryLife;
     }
 }
