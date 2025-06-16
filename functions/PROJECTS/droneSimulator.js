@@ -81,13 +81,53 @@ class Drone {
         this.city = city;
         this.destination = destination;
     }
-    statusReport() {
-        console.log(`${this.name} is carrying: ${this.medicine.name} (${this.medicine.amount} units)`);
-        console.log(`Coming from: ${this.city.name}`);
-        console.log(` Heading to: ${this.destination.name}`);
-        console.log(`Battery level: ${this.batteryLife}%`);
+
+    batteryCheck() {
+    if (this.batteryLife < 25) {
+        console.log(`${this.batteryLife}% battery is too low, aborting mission.`);
+        return false;
+    } else {
+        return true;
     }
 }
+
+deliver() {
+    if (!this.batteryCheck()) {
+        console.log(`${this.name} could not deliver. Battery too low.`);
+        return;
+    }
+
+    this.destination.deliveryLog(this.medicine);
+    console.log(`${this.name} delivered ${this.medicine.amount} units of ${this.medicine.name} to ${this.destination.name}`);
+}
+
+statusReport() {
+    console.log(`${this.name} is carrying: ${this.medicine.name} (${this.medicine.amount} units)`);
+    console.log(`Coming from: ${this.city.name}`);
+    console.log(`Heading to: ${this.destination.name}`);
+    console.log(`Battery level: ${this.batteryLife}%`);
+}
+
+}
+let panado = new Medicine("Panado", 10);
+let harare = new City("Harare", 0, 0);
+let chivi = new Village("Chivi", 10, 5);
+
+harare.addVillage(chivi);
+
+let drone1 = new Drone("SkyDrop-1", panado, 0, 0, 20, harare, chivi); // Low battery
+drone1.statusReport();
+drone1.deliver();
+
+let drone2 = new Drone("SkyDrop-2", new Medicine("Malaria Meds", 50), 0, 0, 80, harare, chivi); // Enough battery
+drone2.statusReport();
+drone2.deliver();
+
+chivi.medList(); // Check if delivery updated meds
+
+
+
+/*
 // 1. Create Cities
 const harare = new City("Harare", 0, 0);
 const bulawayo = new City("Bulawayo", 100, 100);
@@ -121,6 +161,10 @@ chivi.deliveryLog(panado);   // Pushes a med that triggers supply warning
 
 // 9. Check Village med status
 chivi.medList();             // Should show both meds, warn on panado
+
+
+
+*/
 
 /*const chivi = new Village("Chivi", 20, 15);
 
