@@ -29,14 +29,15 @@ class Village {
     }
 
     medList(){
-      for(let list of availableMeds){
-        console.log(`We have ${med.name} : ${med.amount} availabe`)
+      for(let med of this.availableMeds){
+        
         if(med.amount <= 25){
-            console.log("Running low")
+            console.log(`We have ${med.amount}  ${med.name} boxes available and we are due for supply`)
+            
         }
         else{
-        console.log("No supply due")
-        }
+        console.log(`We have ${med.amount} ${med.name} boxes available`)   
+         }
           
     }
 }
@@ -57,8 +58,10 @@ class Drone{
         this.batteryLife = batteryLife;
     }
 }
-/*const chivi = new Village("Chivi");
-console.log(chivi);
-chivi.deliveryLog("Panado", 10);
-chivi.deliveryLog("Malaria Meds", 100);
-chivi.medList();*/
+const chivi = new Village("Chivi", 20, 15);
+
+chivi.deliveryLog(new Medicine("Panado", 10));
+chivi.deliveryLog(new Medicine("Malaria Meds", 50));
+chivi.deliveryLog(new Medicine("Panado", 10)); // Add more to Panado
+
+chivi.medList();
