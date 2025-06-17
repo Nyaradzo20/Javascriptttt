@@ -21,7 +21,7 @@ class City {
 
 
     listVillages(city) {
-        //  console.log(city.this.villages);
+        
         console.log(`Villages under ${this.name}:`);
         for (let v of this.villages) {
             console.log(`- ${v.name}`);
