@@ -4,7 +4,10 @@ class Hotel{
         this.rooms = rooms;
         this.bookings = bookings;
     }
-    addRoom(){}
+    addRoom(newRoom){
+        
+
+    }
      listAvailableRooms(){
 
      } 
@@ -22,7 +25,9 @@ class Room{
         this.isBooked = isBooked;
         this.price = price;
     }
+  toggleBookingStatus(){
 
+  }
 }
 
 class Customer{
@@ -31,4 +36,12 @@ class Customer{
         this.id =id;
         this.bookedRoom;
     }
+    book(room){
+
+    }
 }
+
+let room1 = new Room(1, "Double", false, 900);
+console.log(room1);
+let room2 = new Room(3, "Double", true, 900);
+console.log(room2);
