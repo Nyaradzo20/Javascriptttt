@@ -21,17 +21,40 @@ class Hotel{
             console.log(`Room ${r.roomNumber} is available for booking`)
             available = false;
         }
-        if(!available){
+        if(r.isBooked === true){
             console.log("Sorry, no rooms are available right now.");
 
         }
     }
      } 
 
-     bookRoom(){
+     bookRoom(room, customer){
+        for (let r of this.rooms)
+        {
+            if (r.roomNumber === room.roomNumber && r.isBooked === false) {
+      r.isBooked = true;
+      this.bookings.push({ room: r.roomNumber, customer: customer.name });
+      console.log(`${customer.name} has booked room ${r.roomNumber}`);
+      return;
+    }
+  }
 
-     } 
+       console.log(`Room ${room.roomNumber} is already booked or doesn't exist.`);
+    }
+        
+
+
+     
      getSummary(){
+        for(let r of this.bookings)
+        {
+            console.log(`${r.customer} booked  room ${r.room}`);
+           
+        }
+        if (this.bookings.length === 0) {
+        console.log("No bookings yet.");
+}
+
 
      }
 }
@@ -53,6 +76,7 @@ class Customer{
         this.name =name;
         this.id =id;
         this.bookedRoom;
+        
     }
     book(room){
 
@@ -60,17 +84,17 @@ class Customer{
 }
 let hotel = new Hotel("Sheraton");
 console.log(hotel);
-let room1 = new Room(1, "Double", true, 900);
+let room1 = new Room(1, "Double", false, 900);
+let  Nya = new Customer("Nya",4, 1);
+let room2 = new Room(3, "Double", false, 900);
 
 hotel.addRoom(room1);
-hotel.addRoom(room1);
-hotel.addRoom(room1);
+hotel.addRoom(room2);
 hotel.listAvailableRooms();
-
+hotel.bookRoom(room1, Nya)
+hotel.listAvailableRooms();
+hotel.getSummary();
 
 /*
 let room1 = new Room(1, "Double", false, 900);
-console.log(room1);
-let room2 = new Room(3, "Double", true, 900);
-console.log(room2);
-*/
+console.log(room1);*/
