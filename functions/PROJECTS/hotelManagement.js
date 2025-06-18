@@ -19,7 +19,7 @@ class Hotel{
       for (let r of this.rooms){
         if(r.isBooked === false){
             console.log(`Room ${r.roomNumber} is available for booking`)
-            available = false;
+            available = true;
         }
         if(r.isBooked === true){
             console.log("Sorry, no rooms are available right now.");
@@ -67,6 +67,7 @@ class Room{
         this.price = price;
     }
   toggleBookingStatus(){
+  this.isBooked = !this.isBooked;
 
   }
 }
@@ -78,9 +79,6 @@ class Customer{
         this.bookedRoom;
         
     }
-    book(room){
-
-    }
 }
 let hotel = new Hotel("Sheraton");
 console.log(hotel);
@@ -90,7 +88,6 @@ let room2 = new Room(3, "Double", false, 900);
 
 hotel.addRoom(room1);
 hotel.addRoom(room2);
-hotel.listAvailableRooms();
 hotel.bookRoom(room1, Nya)
 hotel.listAvailableRooms();
 hotel.getSummary();
