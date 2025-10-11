@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Styles the input box for entering new tasks */
+        .input {
+            width: 50%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        /* Styles all buttons (Add, Edit, Remove) */
+        button {
+            padding: 10px 20px;
+            background-color: #03b65d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Changes button color on hover */
+        button:hover {
+            background-color: #b9c516;
+        }
+
+        /* Removes default list styling and padding from the task list */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Styles each task item to stack its children vertically and align them to the start */
+        li {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Styles the task text when completed (checkbox checked) */
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        /* Styles the container holding the Edit and Remove buttons */
+        .btn-container {
+            margin-top: 8px;
+            margin-right: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main heading for the to-do list application -->
+    <h1 class="title">To-Do List</h1>
+
+    <!-- Container for adding new tasks and displaying the task list -->
+    <div class="addTask">
+        <!-- Input box for entering a new task -->
+        <input type="text" class="input" />
+        <!-- Button to add the new task to the list -->
+        <button type="submit" class="newTask">Add Task</button>
+        <!-- Unordered list that will contain all the tasks -->
+        <ul id="todoList">
+
+        </ul>
+    </div>
+
+    <script>
+        // Selects the input box, add button, and the task list from the DOM
+        const input = document.querySelector(".input");
+        const addTaskBtn = document.querySelector(".newTask");
+        const todoList = document.querySelector("#todoList");
+
+        // Adds a click event listener to the Add Task button
+        // When clicked, it checks if the input is not empty, then adds the task
+        addTaskBtn.addEventListener("click", () => {
+            const taskText = input.value.trim();
+            if (taskText === "") {
+                alert("Please enter a task!");
+                return;
+            }
+            addTask(taskText);
+            input.value = "";
+        });
+
+        // Function to add a new task to the list
+        // toAdd: the text of the new task
+        function addTask(toAdd) {
+            // Creates a new list item for the task
+            const task = document.createElement("li");
+
+            // Creates a horizontal container for the checkbox and task text
+            const rowContainer = document.createElement("div");
+            rowContainer.style.display = "flex";
+            rowContainer.style.alignItems = "center";
+            rowContainer.style.width = "100%";
+
+            // Creates the checkbox for marking the task as complete
+            const checkBox = document.createElement("input");
+            checkBox.type = "checkbox";
+
+            // Creates a span to hold the task text
+            const textSpan = document.createElement("span");
+            textSpan.textContent = " " + toAdd;
+
+            // Adds an event listener to the checkbox to toggle strikethrough on the task text
+            checkBox.addEventListener("change", function () {
+                textSpan.classList.toggle("completed", checkBox.checked);
+            });
+
+            // Adds the checkbox and task text to the horizontal container
+            rowContainer.appendChild(checkBox);
+            rowContainer.appendChild(textSpan);
+
+            // Adds the horizontal container to the list item
+            task.appendChild(rowContainer);
+
+            // Creates a container for the Edit and Remove buttons
+            const btnContainer = document.createElement("div");
+            btnContainer.className = "btn-container";
+
+            // Creates the Edit button and sets its style and functionality
+            const editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            editBtn.style.backgroundColor = "red";
+            editBtn.onclick = function () {
+                const newTask = prompt("Edit your task:", toAdd);
+                if (newTask !== null && newTask.trim() !== "") {
+                    textSpan.textContent = " " + newTask;
+                }
+            };
+
+            // Creates the Remove button and sets its style and functionality
+            const removeBtn = document.createElement("button");
+            removeBtn.textContent = "Remove";
+            removeBtn.style.backgroundColor = "red";
+            removeBtn.onclick = function () {
+                todoList.removeChild(task);
+            };
+
+            // Adds the Edit and Remove buttons to the button container
+            btnContainer.appendChild(editBtn);
+            btnContainer.appendChild(removeBtn);
+
+            // Adds the button container under the checkbox and task text
+            task.appendChild(btnContainer);
+
+            // Adds the complete task item to the task list
+            todoList.appendChild(task);
+        }
+    </script>
+</body>
+
+</html>
