@@ -30,37 +30,37 @@ numbe.map(double)
 
  //Filter, filters array and returns new value
  let a = [5,4,3,2,1];
- //a = a.filter(x => !(x % 2)) //return 2,4....
-//console.log(a)
+ a = a.filter(x => !(x % 2)) //return 2,4....
+console.log(a)
 
 // finds an element's index
 
 
-/*
-a = a.findIndex(x => x === 1)
- console.log(a)
- */
+ let b = [5,4,3,2,1];
+
+b = b.findIndex(x => x === 1)
+ console.log(b)
+ 
 
 //stops after finding first one
+ let c = [5,4,3,2,1];
+c = c.find(x =>  !(x % 2));
+console.log(c)
 
-/* a = a.find(x =>  !(x % 2));
-console.log(a)
-*/
 
 //returns true if all elements are true
-
-/*
-a = a.every(x => x === 5)
-console.log(a)
-*/
+let d = [5,4,3,2,1];
+d = d.every(x => x === 5)
+console.log(d)
 
 // returns true if some are elements are trrue , even 1
-a = a.some(x => x === 5);
-console.log(a);
+let f = [5,4,3,2,1];
+f = f.some(x => x === 5);
+console.log(f);
 
 let e = [5,4,3,2,4]
 
- const d = e.reduce((x, y) => x+y);
+ const g = e.reduce((x, y) => x+y);
 
  console.log(d)
 
@@ -68,6 +68,12 @@ let e = [5,4,3,2,4]
 //you can use Infinity for extremely nested arrays
 
  const myArr = [1, 2, [3, [4, 5, 6], 7], 8];
- console.log(myArr)
+ //console.log(myArr)
 const newArr = myArr.flat(Infinity);
  console.log(newArr)
+
+ //concat----> combines two arrays
+ let h = a.concat(newArr);
+ console.log(h);
+
+ 
