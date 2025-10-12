@@ -46,5 +46,28 @@ a = a.findIndex(x => x === 1)
 /* a = a.find(x =>  !(x % 2));
 console.log(a)
 */
+
+//returns true if all elements are true
+
+/*
 a = a.every(x => x === 5)
 console.log(a)
+*/
+
+// returns true if some are elements are trrue , even 1
+a = a.some(x => x === 5);
+console.log(a);
+
+let e = [5,4,3,2,4]
+
+ const d = e.reduce((x, y) => x+y);
+
+ console.log(d)
+
+//flattens  multi dimensional arrays into one standard array, the default is 1 but 
+//you can use Infinity for extremely nested arrays
+
+ const myArr = [1, 2, [3, [4, 5, 6], 7], 8];
+ console.log(myArr)
+const newArr = myArr.flat(Infinity);
+ console.log(newArr)
